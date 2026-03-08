@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Từ 11B2 2026</title>
+    <title>11B2 - 2026</title>
     <link rel="stylesheet" href="style.css">
     <!-- GG ICON -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios,arrow_forward_ios,close,list_alt" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios,arrow_forward_ios,close,list_alt,pause,play_arrow,repeat,skip_next,skip_previous"/>
     <!-- GG FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,9 +17,9 @@
     </div>
     <main>
         <div class="top">
-            <h1 class="heading">Heading here</h1>
-            <p class="decs FloatIn">Lorem ipsum dolor sit amet blah blah blah. Cùng xem blah blah từ blah blah 11B2 nhé!</p>
-            <button id="watchVidButton">
+            <h1 class="heading">Từ 11B2</h1>
+            <p class="decs" style="display: none; text-align:justify;">Ngày 8 tháng 3 lại đến rồi. Hãy cùng lắng nghe xem những lời chúc từ các bạn nam 11B2 dành cho mọi người nhé!</p>
+            <button id="watchVidButton" style="display: none;">
                 <div class="buttonWrap">
                     <div class="buttonBGColor"></div>
                     <div class="buttonBorderColor"></div>
@@ -47,9 +47,25 @@
             </div>
         </div>
     </main>
+    <div class="musicWrap">
+        <audio src="music/1.mp3" id="musicAudio" autoplay></audio>
+        <div class="musicInfo">
+            <div class="musicName" id="musicName"></div>
+            <div id="progressBar" class="progressBar">
+                <div id="progress" class="progress"></div>
+            </div>
+            <div class="navMusic">
+                <span id="previousTrack" class="ggIcon material-symbols-rounded">skip_previous</span>
+                <span id="pause" class="ggIcon material-symbols-rounded">pause</span>
+                <span id="nextTrack" class="ggIcon material-symbols-rounded">skip_next</span>
+                <span id="loop" class="ggIcon material-symbols-rounded">repeat</span>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="setup.js"></script>
 <script src="video.js" type="module"></script>
 <script src="animation.js" type="module"></script>
 <script src="script.js" type="module"></script>
+<script src="music.js"></script>
 </html>

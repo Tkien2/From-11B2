@@ -13,8 +13,16 @@ const videoList = [
         id: 8
     },
     {
+        name: "Hoàng Đăng",
+        id: 10
+    },
+    {
         name: "Nhật Huy",
         id: 17
+    },
+    {
+        name: "Quốc Khoa",
+        id: 22
     },
     {
         name: "Phạm Tâm",
@@ -42,11 +50,11 @@ const delay = 0
  */
 function setVideoSize(){
     if(videoElement.offsetHeight>videoElement.offsetWidth){
-        videoElement.style.maxHeight = "50vh"
+        videoElement.style.maxHeight = "70vh"
         videoElement.style.maxWidth = "none"
         videoElement.style.marginTop = "auto"
     } else{
-        videoElement.style.maxWidth = "80vw"
+        videoElement.style.maxWidth = "calc(80vw - 40px)"
         videoElement.style.maxHeight = "none"
         videoElement.style.marginTop = "30px"
     }
@@ -67,9 +75,9 @@ async function jumpToVideo(index){
     if(videoListIndex<=maxVideoIndex && videoListIndex>= 0){
         await FadeOut()
         videoElement.src = `video/${parseInt(videoList[index].id)}.mp4`
+        videoListIndex = index
     }
     else{
-        console.error("out of index: ", index)
         if(videoListIndex>maxVideoIndex){videoListIndex = maxVideoIndex}
         else if(videoListIndex<1){videoListIndex = 1}
     }
@@ -77,9 +85,13 @@ async function jumpToVideo(index){
 async function FadeOut(){
     await animation.playFadeOut(videoElement, duration, delay, true)
 }
+function updateIndexElement(){
+    currentVideoIndexElement.innerHTML = videoListIndex + 1
+}
 async function FadeIn(){
     await animation.playFadeIn(videoElement, "block", duration, delay)
     setVideoSize()
+    updateIndexElement()
 }
 videoElement.addEventListener("canplaythrough", async ()=>{
     await FadeIn()
@@ -91,12 +103,10 @@ videoElement.addEventListener("ended", async ()=>{
 nextVideoButton.addEventListener("click", async ()=>{
     videoListIndex++
     await jumpToVideo(videoListIndex)
-    currentVideoIndexElement.innerHTML = videoListIndex + 1
 })
 lastVideoButton.addEventListener("click", async ()=>{
     videoListIndex--
     await jumpToVideo(videoListIndex)
-    currentVideoIndexElement.innerHTML = videoListIndex + 1
 })
 // ======LIST==========
 const videoListElement = document.getElementById("videoList")
@@ -128,6 +138,7 @@ let isClicked = false
 watchButton.addEventListener("click",async ()=>{
     if(!isClicked){
         await animation.playFadeOut(watchButton, 1, 0, true)
+        await animation.playFadeOut(document.querySelector(".top"), 1, 0, true)
         await animation.playFadeIn(document.querySelector(".videoList"), "flex", 1, 0)
         await jumpToVideo(0)
         isClicked = true
