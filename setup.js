@@ -14,7 +14,7 @@ async function playBubble(n){
         bubble.classList.add("bubble")
         bubble.style.left = `${Math.random()*(window.innerWidth - (bubble.offsetWidth*bubbleScale))}px`
         bubble.style.scale = `${bubbleScale}`
-        bubble.animationDuration = `${getRandomNum(13,20)}s`
+        bubble.animationDuration = `${getRandomNum(8,13)}s`
         bubble.classList.add(`bubbleColor${Math.round(getRandomNum(1,5))}`)
         document.getElementById("bubblesBackground").appendChild(bubble)
         if(count >= n){
@@ -22,7 +22,7 @@ async function playBubble(n){
             count--
         }
         count++
-        await wait(getRandomNum(400,1300))
+        await wait(getRandomNum(200,1200))
     }
 }
 playBubble(15)

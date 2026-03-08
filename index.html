@@ -29,20 +29,22 @@
                 <span style="position: relative; z-index: 2;">Xem video</span>
             </button>
         </div>
-        <div class="videoList" style="display: none;">
-            <div class="videoWrap">
-                <ul>
-                    <li><video id="video" controls src="video/1.mp4" style="display: block"></video></li>
-                </ul>
-                <div class="nav">
-                    <span id="lastVideo" style="opacity: 0;" class="ggIcon material-symbols-rounded">arrow_back_ios</span>
-                    <p style="letter-spacing: 2px; font-size: 17px;"><span id="videoIndex"></span>/<span id="maxVideoIndex"></span></p>
-                    <span id="nextVideo" class="ggIcon material-symbols-rounded">arrow_forward_ios</span>
+        <div class="centerVideoList">
+            <div class="videoList" style="display: none;">
+                <div class="videoWrap">
+                    <ul>
+                        <li><video id="video" autoplay controls style="display: block; opacity: 0;"></video></li>
+                    </ul>
+                    <div class="nav">
+                        <span id="lastVideo" style="opacity: 0;" class="ggIcon material-symbols-rounded">arrow_back_ios</span>
+                        <p style="letter-spacing: 2px; font-size: 17px;"><span id="videoIndex"></span>/<span id="maxVideoIndex"></span></p>
+                        <span id="nextVideo" class="ggIcon material-symbols-rounded">arrow_forward_ios</span>
+                    </div>
                 </div>
+                <span id="openVideoList" class="ggIcon material-symbols-rounded">list_alt</span>
+                <ul id="videoList" style="display: none;">
+                </ul>
             </div>
-            <span id="openVideoList" class="ggIcon material-symbols-rounded">list_alt</span>
-            <ul id="videoList" style="display: none;">
-            </ul>
         </div>
     </main>
 </body>

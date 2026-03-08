@@ -11,20 +11,30 @@ body::-webkit-scrollbar-thumb{
     border-radius: 5px;
 }
 :root{
-    --BGColor: rgb(15, 17, 20);
+    --BGColor: rgb(28, 30, 36);
     --watchButtonColor: linear-gradient(45deg, rgb(39, 241, 255), rgb(112, 41, 255));
     --watchButtonColorHover: linear-gradient(45deg, rgb(39, 241, 255),rgb(39, 241, 255),transparent, rgb(112, 41, 255),rgb(112, 41, 255));
-    --bubbleColor1: rgba(138, 155, 205, 0.25);
-    --bubbleColor2: rgba(140, 124, 219, 0.25);
+    --bubbleColor1: rgba(114, 151, 197, 0.25);
+    --bubbleColor2: rgba(128, 97, 198, 0.25);
     --bubbleColor3: rgba(96, 175, 214, 0.25);
     --bubbleColor4: rgba(163, 119, 220, 0.25);
     --bubbleColor5: rgba(89, 135, 226, 0.25);
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 40px;
+    padding-top: 35px;
+    padding-bottom: 0;
 }
 body{
     background-color: var(--BGColor);
     box-sizing:border-box;
     min-height: 100vh;
-    padding: 10px 20px;
 }
 #bubblesBackground{
     position: fixed;
@@ -98,13 +108,6 @@ body{
     color: white;
     font-size: 40px;
     margin-bottom: 15px;
-}
-main{
-    padding: 20px;
-    padding-top: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 p{
     color: rgb(230, 234, 240);
@@ -209,7 +212,8 @@ button{
     display: flex;
     align-items: flex-start;
     position: relative;
-    margin-top: 30px;
+    padding-top: 10px;
+    margin-top: 10px;
 }
 .videoWrap{
     display: flex;
@@ -220,10 +224,15 @@ ul{
     display: flex;
     justify-content: center;
     overflow: hidden;
-    min-height: 40vh;
     max-height: 50vh;
     align-items: center;
-    padding: 0 10px 10px 10px;
+    padding: 20px 10px 10px 10px;
+}
+.centerVideoList{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 video{
     max-height: 50vh;

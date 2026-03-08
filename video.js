@@ -9,12 +9,20 @@ const videoList = [
         id: 1
     },
     {
+        name: "Anh Dũng",
+        id: 8
+    },
+    {
+        name: "Nhật Huy",
+        id: 17
+    },
+    {
         name: "Phạm Tâm",
         id: 37
     },
     {
         name: "Quang Việt",
-        id: 3
+        id: 47
     },
 ]
 const nextVideoButton = document.getElementById("nextVideo")
@@ -23,7 +31,7 @@ const videoElement = document.getElementById("video")
 const currentVideoIndexElement = document.getElementById("videoIndex")
 const maxVideoIndexElement = document.getElementById("maxVideoIndex")
 let videoListIndex = 0
-const maxVideoIndex = 2
+const maxVideoIndex = videoList.length - 1
 maxVideoIndexElement.innerHTML = maxVideoIndex+1
 currentVideoIndexElement.innerHTML = videoListIndex+1
 const duration = 0.3
@@ -32,6 +40,17 @@ const delay = 0
  * 
  * @param {number} index index from videoList 0,1,2,... 
  */
+function setVideoSize(){
+    if(videoElement.offsetHeight>videoElement.offsetWidth){
+        videoElement.style.maxHeight = "50vh"
+        videoElement.style.maxWidth = "none"
+        videoElement.style.marginTop = "auto"
+    } else{
+        videoElement.style.maxWidth = "80vw"
+        videoElement.style.maxHeight = "none"
+        videoElement.style.marginTop = "30px"
+    }
+}
 async function jumpToVideo(index){
     if(videoListIndex>=maxVideoIndex){
         nextVideoButton.style.opacity = 0
@@ -56,13 +75,18 @@ async function jumpToVideo(index){
     }
 }
 async function FadeOut(){
-    await animation.playFadeOut(videoElement, duration, delay, false)
+    await animation.playFadeOut(videoElement, duration, delay, true)
 }
 async function FadeIn(){
     await animation.playFadeIn(videoElement, "block", duration, delay)
+    setVideoSize()
 }
-videoElement.addEventListener("canplay", ()=>{
-    FadeIn()
+videoElement.addEventListener("canplaythrough", async ()=>{
+    await FadeIn()
+})
+videoElement.addEventListener("ended", async ()=>{
+    videoListIndex++
+    await jumpToVideo(videoListIndex)
 })
 nextVideoButton.addEventListener("click", async ()=>{
     videoListIndex++
@@ -96,5 +120,16 @@ openVideoListIcon.addEventListener("click", ()=>{
         videoListElement.style.display = "flex"
     }else{
         videoListElement.style.display = "none"
+    }
+})
+//=======button===========
+const watchButton = document.getElementById("watchVidButton")
+let isClicked = false
+watchButton.addEventListener("click",async ()=>{
+    if(!isClicked){
+        await animation.playFadeOut(watchButton, 1, 0, true)
+        await animation.playFadeIn(document.querySelector(".videoList"), "flex", 1, 0)
+        await jumpToVideo(0)
+        isClicked = true
     }
 })
