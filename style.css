@@ -32,6 +32,9 @@ main{
     padding-top: 35px;
     padding-bottom: 0;
 }
+main *{
+    z-index: 2;
+}
 body{
     background-color: var(--BGColor);
     box-sizing:border-box;
@@ -389,7 +392,7 @@ video{
     min-height: 100vh;
     max-height: 100vh;
     overflow: hidden;
-    z-index: -9;
+    z-index: 1;
 }
 #volumeValue{
     width: 30%;
