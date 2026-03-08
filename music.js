@@ -31,6 +31,7 @@ function playTrackByIndex(index){
         musicAudio.src = `music/${musicList[index].id}.mp3`
         currentIndex = index
     }
+    musicAudio.play()
     musicName.innerHTML = musicList[currentIndex].name
 }
 musicAudio.addEventListener("ended", ()=>{
