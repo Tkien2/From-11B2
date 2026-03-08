@@ -390,6 +390,9 @@ video{
     max-height: 100vh;
     overflow: hidden;
 }
+#volumeValue{
+    width: 30%;
+}
 #closeTopLayer{
     background: linear-gradient(rgba(68, 77, 128, 0.4), rgba(36, 42, 75, 0.229));
     padding: 10px;

@@ -8,12 +8,12 @@ const musicList = [
         id: 4,
     }
 ]
-let volume = 0.3
 let currentIndex = 0
 const nextTrack = document.getElementById("nextTrack")
 const prevTrack = document.getElementById("previousTrack")
 const pause = document.getElementById("pause")
 const musicAudio = document.getElementById("musicAudio")
+musicAudio.volume = 0.15
 const progress = document.getElementById("progress")
 const progressBar = document.getElementById("progressBar")
 const musicName = document.getElementById("musicName")
@@ -31,7 +31,6 @@ function playTrackByIndex(index){
         musicAudio.src = `music/${musicList[index].id}.mp3`
         currentIndex = index
     }
-    musicAudio.volume = volume
     musicName.innerHTML = musicList[currentIndex].name
 }
 musicAudio.addEventListener("ended", ()=>{
