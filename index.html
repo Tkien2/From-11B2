@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Từ 11B2 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- GG ICON -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios,arrow_forward_ios,close,list_alt" />
+    <!-- GG FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="bubblesBackground">
+    </div>
+    <main>
+        <div class="top">
+            <h1 class="heading">Heading here</h1>
+            <p class="decs FloatIn">Lorem ipsum dolor sit amet blah blah blah. Cùng xem blah blah từ blah blah 11B2 nhé!</p>
+            <button id="watchVidButton">
+                <div class="buttonWrap">
+                    <div class="buttonBGColor"></div>
+                    <div class="buttonBorderColor"></div>
+                    <div class="buttonLightEffect"></div>
+                </div>
+                <div class="buttonGlow"></div>
+                <span style="position: relative; z-index: 2;">Xem video</span>
+            </button>
+        </div>
+        <div class="videoList" style="display: none;">
+            <div class="videoWrap">
+                <ul>
+                    <li><video id="video" controls src="video/1.mp4" style="display: block"></video></li>
+                </ul>
+                <div class="nav">
+                    <span id="lastVideo" style="opacity: 0;" class="ggIcon material-symbols-rounded">arrow_back_ios</span>
+                    <p style="letter-spacing: 2px; font-size: 17px;"><span id="videoIndex"></span>/<span id="maxVideoIndex"></span></p>
+                    <span id="nextVideo" class="ggIcon material-symbols-rounded">arrow_forward_ios</span>
+                </div>
+            </div>
+            <span id="openVideoList" class="ggIcon material-symbols-rounded">list_alt</span>
+            <ul id="videoList" style="display: none;">
+            </ul>
+        </div>
+    </main>
+</body>
+<script src="setup.js"></script>
+<script src="video.js" type="module"></script>
+<script src="animation.js" type="module"></script>
+<script src="script.js" type="module"></script>
+</html>

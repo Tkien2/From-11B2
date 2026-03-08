@@ -1,0 +1,303 @@
+*{
+    /* border: rgb(255, 0, 0) solid 0.2px */
+    margin: 0px;
+    font-family: "Varela Round";
+    color: white;
+}
+body::-webkit-scrollbar{
+    width: 0px;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+}
+:root{
+    --BGColor: rgb(15, 17, 20);
+    --watchButtonColor: linear-gradient(45deg, rgb(39, 241, 255), rgb(112, 41, 255));
+    --watchButtonColorHover: linear-gradient(45deg, rgb(39, 241, 255),rgb(39, 241, 255),transparent, rgb(112, 41, 255),rgb(112, 41, 255));
+    --bubbleColor1: rgba(138, 155, 205, 0.25);
+    --bubbleColor2: rgba(140, 124, 219, 0.25);
+    --bubbleColor3: rgba(96, 175, 214, 0.25);
+    --bubbleColor4: rgba(163, 119, 220, 0.25);
+    --bubbleColor5: rgba(89, 135, 226, 0.25);
+}
+body{
+    background-color: var(--BGColor);
+    box-sizing:border-box;
+    min-height: 100vh;
+    padding: 10px 20px;
+}
+#bubblesBackground{
+    position: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -999;
+}
+.bubbleColor1{
+    background-color: var(--bubbleColor1);
+}
+.bubbleColor1::before{
+    background-color: var(--bubbleColor1);
+}
+.bubbleColor2{
+    background-color: var(--bubbleColor2);
+}
+.bubbleColor2::before{
+    background-color: var(--bubbleColor2);
+}
+.bubbleColor3{
+    background-color: var(--bubbleColor3);
+}
+.bubbleColor3::before{
+    background-color: var(--bubbleColor3);
+}
+.bubbleColor4{
+    background-color: var(--bubbleColor4);
+}
+.bubbleColor4::before{
+    background-color: var(--bubbleColor4);
+}
+.bubbleColor5{
+    background-color: var(--bubbleColor5);
+}
+.bubbleColor5::before{
+    background-color: var(--bubbleColor5);
+}
+.bubble{
+    display: flex;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    bottom: 0px;
+    position: absolute;
+    animation: Float linear;
+    animation-duration: 15s;
+    opacity: 0;
+}
+.bubble::before{
+    content: "";
+    position: relative;
+    inset: 0;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 50%;
+    filter: blur(3px);
+    z-index: -1;
+}
+@keyframes Float{
+    0%{opacity: 0;}
+    4%{opacity: 1;}
+    50%{opacity: 0.3;}
+    80%{opacity: 0;}
+    100%{transform: translateY(-100vh); opacity: 0;}
+}
+.heading{
+    text-shadow: white 0 0 6px;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+main{
+    padding: 20px;
+    padding-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+p{
+    color: rgb(230, 234, 240);
+}
+.FloatIn{
+    animation: FloatIn ease-out 1s
+}
+@keyframes FloatIn{
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button{
+    padding: 13px 20px;
+    border-radius: 10px;
+    margin: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    background-color: transparent;
+}
+#watchVidButton{
+    transition-duration: 0.5s;
+    cursor: pointer;
+    position: relative;
+}
+#watchVidButton:hover{
+    letter-spacing: 3px;
+    font-size: 18px;
+}
+.buttonWrap{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.buttonBGColor{
+    position: absolute;
+    inset: 2px;
+    background-color: var(--BGColor);
+    z-index: 2;
+    border-radius: 8px;
+}
+.buttonBorderColor{
+    background: var(--watchButtonColor);
+    position: absolute;
+    inset: -50px -15px;
+    z-index: 0;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+    animation: Spin 1s linear 0s infinite;
+}
+@keyframes Spin {
+    0%{transform: rotate(0deg);}
+    50%{transform: rotate(179deg);}
+    75%{transform: rotate(269deg);}
+    100%{transform: rotate(360deg);}
+}
+.buttonLightEffect{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    transform: skew(20deg) translateX(-130%);
+    z-index: 3;
+    transition-duration: 0.5s;
+}
+#watchVidButton:hover .buttonLightEffect{
+    filter: blur(6px);
+    transform: skew(20deg) translateX(+230%);
+}
+#watchVidButton:hover .buttonGlow{
+    filter: blur(6px);
+}
+#watchVidButton:hover .buttonWrap .buttonBorderColor{
+    transform: rotate(180deg);
+    background: var(--watchButtonColorHover);
+    scale: 1.2;
+}
+.buttonGlow{
+    position: absolute;
+    z-index: -999;
+    background-color: rgba(33, 107, 255, 0.616);
+    inset: 0;
+    border-radius: 10px;
+    filter: blur(3px);
+    transition-duration: 1s;
+}
+.videoList{
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    margin-top: 30px;
+}
+.videoWrap{
+    display: flex;
+    flex-direction: column;
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    min-height: 40vh;
+    max-height: 50vh;
+    align-items: center;
+    padding: 0 10px 10px 10px;
+}
+video{
+    max-height: 50vh;
+    display: none;
+    border-radius: 10px;
+    position: relative;
+    filter: drop-shadow(rgb(77, 117, 219) 0 0 7px);
+}
+.nav{
+    min-width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    align-items: center;
+}
+.ggIcon{
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+.ggIcon:hover{
+    color: rgb(173, 188, 255);
+}
+.FadeIn{
+    animation: FadeIn ease-in-out;
+}
+@keyframes FadeIn{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+.FadeOut{
+    animation: FadeOut ease-in-out;
+}
+@keyframes FadeOut{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+#openVideoList{
+    position: absolute;
+    right: -25px;
+}
+#videoList{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    right: 0;
+    justify-content: flex-start;
+    width: 230px;
+    max-width: 46vw;
+    max-height: 55vh;
+    overflow-y: scroll;
+    filter: drop-shadow(rgba(62, 116, 255, 0.5) 0 0 3px);
+}
+#videoList::-webkit-scrollbar{
+    width: 0;
+}
+#videoList li{
+    padding: 15px 20px 15px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+#videoList li:nth-child(even){
+    background-color: rgb(44, 48, 77);
+}
+#videoList li:nth-child(odd){
+    background-color: rgb(39, 42, 66);
+}
+#videoList li:nth-last-child(1){
+    border-bottom-left-radius: 10px;
+}
+#videoList li:nth-child(1){
+    border-top-right-radius: 10px;
+}
+#videoList li:hover{
+    background-color: rgb(47, 57, 114);
+}
