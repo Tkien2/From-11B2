@@ -389,6 +389,7 @@ video{
     min-height: 100vh;
     max-height: 100vh;
     overflow: hidden;
+    z-index: -9;
 }
 #volumeValue{
     width: 30%;
