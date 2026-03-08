@@ -2,19 +2,13 @@ const musicList = [
     {
         name: "brianjcb - TISO",
         id: 1,
-        volume: 0.4
     },
     {
-        name: "Sasha Alex Sloan - Older",
-        id: 2,
-        volume: 0.3,
-    },
-    {
-        name: "YungKai - Blue",
-        id: 3,
-        volume: 0.25
-    },
+        name: "brianjcb - Pixels",
+        id: 4,
+    }
 ]
+let volume = 0.3
 let currentIndex = 0
 const nextTrack = document.getElementById("nextTrack")
 const prevTrack = document.getElementById("previousTrack")
@@ -37,7 +31,7 @@ function playTrackByIndex(index){
         musicAudio.src = `music/${musicList[index].id}.mp3`
         currentIndex = index
     }
-    musicAudio.volume = musicList[index].volume
+    musicAudio.volume = volume
     musicName.innerHTML = musicList[currentIndex].name
 }
 musicAudio.addEventListener("ended", ()=>{
@@ -92,3 +86,55 @@ progressBar.addEventListener("click", (e)=>{
     musicAudio.currentTime = (percent/100)*musicAudio.duration
 })
 playTrackByIndex(0)
+// ===volume===
+const volumeBar = document.getElementById("volumeBar")
+const volumeValue = document.getElementById("volumeValue")
+const volumeFactor = 0.5
+function setVolumeByXClick(xEvent){
+    const x = xEvent
+    const Element = volumeBar.getBoundingClientRect()
+    const xElement = Element.left
+    const widthElement = Element.width
+    const percent = (()=>{
+        let pc = ((x-xElement)/widthElement)*100
+        if(pc>100){
+            return 100
+        } else if(pc<0){
+            return 0
+        } else{ return pc}
+    })();
+    volumeValue.style.width = `${percent}%`
+    musicAudio.volume = (percent/100)*volumeFactor
+}
+volumeBar.addEventListener("click", (e)=>{
+    setVolumeByXClick(e.clientX)
+})
+let isDragging = false
+volumeBar.addEventListener("pointerdown", ()=>{
+    isDragging = true
+})
+document.addEventListener("pointermove", (e)=>{
+    if(isDragging){
+        setVolumeByXClick(e.clientX)
+    }
+})
+document.addEventListener("pointerup", ()=>{
+    isDragging = false
+})
+//===closeTL===
+const closeTopLayer = document.getElementById("closeTopLayer")
+const musicWrap = document.getElementById("musicWrap")
+const volumeWrap = document.getElementById("volumeWrap")
+let isTLClosed = false
+closeTopLayer.addEventListener("click", ()=>{
+    isTLClosed = !isTLClosed
+    if(isTLClosed){
+        musicWrap.style.transform = "translate(-50%, -100%)"
+        volumeWrap.style.transform = "translate(-50%, 100%)"
+        closeTopLayer.style.opacity = 0.3
+    } else{
+        musicWrap.style.transform = "translate(-50%, 0)"
+        volumeWrap.style.transform = "translate(-50%, 0)"
+        closeTopLayer.style.opacity = 1
+    }
+})
