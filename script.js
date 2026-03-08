@@ -7,3 +7,4 @@ const heading = document.querySelector(".heading")
     await animation.playFadeIn(decs, "block", 1, 2.5)
     await animation.playFadeIn(watchVideoButton, "block", 1, 4)
 })();
+console.log("v.0.4.4")

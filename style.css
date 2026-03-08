@@ -157,6 +157,7 @@ button{
 }
 .decs{
     font-size: 18px;
+    max-width: 500px;
 }
 .buttonWrap{
     position: absolute;
@@ -432,5 +433,8 @@ video{
     }
     #closeTopLayer{
         font-size: 14px;
+    }
+    .decs{
+        max-width: 80vw;
     }
 }
