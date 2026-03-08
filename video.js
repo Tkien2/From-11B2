@@ -44,6 +44,7 @@ maxVideoIndexElement.innerHTML = maxVideoIndex+1
 currentVideoIndexElement.innerHTML = videoListIndex+1
 const duration = 0.3
 const delay = 0
+const loading = document.getElementById("loading")
 /**
  * 
  * @param {number} index index from videoList 0,1,2,... 
@@ -76,6 +77,7 @@ async function jumpToVideo(index){
         await FadeOut()
         videoElement.src = `video/${parseInt(videoList[index].id)}.mp4`
         videoListIndex = index
+        loading.style.display = "block"
     }
     else{
         if(videoListIndex>maxVideoIndex){videoListIndex = maxVideoIndex}
@@ -92,6 +94,7 @@ async function FadeIn(){
     await animation.playFadeIn(videoElement, "block", duration, delay)
     setVideoSize()
     updateIndexElement()
+    loading.style.display = "none"
 }
 videoElement.addEventListener("canplaythrough", async ()=>{
     await FadeIn()
